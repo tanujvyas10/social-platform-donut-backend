@@ -28,7 +28,7 @@ module.exports = {
     const { yes, no, maybe } = req.body
     Event.findById(req.params.id, function (error, data) {
       if (error) {
-        res.status(201).json({ error: error })
+        res.status(400).json({ error: error })
       }
       if (data == null) {
         res.status(400).json({ error: 'No Event is available' })
@@ -48,9 +48,9 @@ module.exports = {
         },
         function (error, data) {
           if (error) {
-            res.status(201).json({ error: error })
+            res.status(400).json({ error: error })
           }
-          res.status(400).json({ updatedData: data })
+          res.status(201).json({ rsvpData: data })
         })
       }
       if (no) {
@@ -61,9 +61,9 @@ module.exports = {
         },
         function (error, data) {
           if (error) {
-            res.status(201).json({ error: error })
+            res.status(400).json({ error: error })
           }
-          res.status(400).json({ updatedData: data })
+          res.status(201).json({ rsvpData: data })
         })
       }
       if (maybe) {
@@ -73,9 +73,9 @@ module.exports = {
           }
         }, function (error, data) {
           if (error) {
-            res.status(201).json({ error: error })
+            res.status(400).json({ error: error })
           }
-          res.status(400).json({ updatedData: data })
+          res.status(201).json({ rsvpData: data })
         })
       }
     }
